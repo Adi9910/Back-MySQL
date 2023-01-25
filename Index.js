@@ -5,18 +5,21 @@ const app = express();
 
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
+
 //MYSQL
 const pool = mysql.createPool({
-  connectionLimit: 10,
   host: "localhost",
   user: "root",
-  password: "password",
-  database: "nodejs_beers",
+  password: "BUNNYbhai22@",
+  database: "employee",
 });
+
 //get all beers
-app.get("", (res, req) => {
+app.get("/rows", (req, res) => {
   pool.getConnection((err, connection) => {
     if (err) throw err;
+    connection.query("SELECT * FROM employee", (err, rows) => {
+    });
   });
 });
 
